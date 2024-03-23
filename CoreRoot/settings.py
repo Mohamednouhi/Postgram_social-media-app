@@ -24,14 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/    
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-^i!nlxcomdanxm$%#dwn!bjg)rmtwpw&@!_9#&+oepni!%-37y'
 
 SECRET_KEY = os.environ.get(
     "SECRET_KEY", default=
-    'django-insecure-^i!nlxcomdanxm$%#dwn!bjg)rmtwpw&@!_9#&+oepni!%-37y'
+    'django-insecure-^i!nlxcomdanxm$%#dwn!bjg)rmtwpw&@!_9#&+oepni!%-37y'   
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
-    
+
 ]
 
 MIDDLEWARE = [
@@ -82,7 +82,7 @@ ROOT_URLCONF = 'CoreRoot.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',      
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -90,7 +90,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'django.contrib.messages.context_processors.messages',     
             ],
         },
     },
@@ -125,7 +125,7 @@ DATABASES = {
 #        "ENGINE": "django.db.backends.postgresql_psycopg2",
 #        "NAME": os.getenv("DATABASE_NAME", "coredb"),
 #        "USER": os.getenv("DATABASE_USER", "core"),
-#        "PASSWORD": os.getenv("DATABASE_PASSWORD", "wCh29&HE&T83"),
+#        "PASSWORD": os.getenv("DATABASE_PASSWORD", "wCh29&HE&T83"),       
 #        "HOST": os.environ.get("DATABASE_HOST", "localhost"),
 #        "PORT": os.getenv("DATABASE_PORT", "5432"),
 #        }
@@ -166,18 +166,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field   
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'core_user.User'
 
-REST_FRAMEWORK = {    
+REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',       
     ),
 
     'DEFAULT_FILTER_BACKENDS':
@@ -185,7 +187,7 @@ REST_FRAMEWORK = {
 
     'DEFAULT_PAGINATION_CLASS':
     'rest_framework.pagination.LimitOffsetPagination',
-    
+
     'PAGE_SIZE': 10,
 }
 
@@ -201,10 +203,11 @@ MEDIA_ROOT = BASE_DIR / "uploads"
 
 # Default avatar URL
 
-# DEFAULT_AVATAR_URL = "https://avatars.dicebear.com/api/identicon/.svg"
+# DEFAULT_AVATAR_URL = "https://avatars.dicebear.com/api/identicon/.svg"   
 DEFAULT_AVATAR_URL = "https://api.dicebear.com/8.x/personas/svg?seed=Gizmo"
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000"
 ]
+
